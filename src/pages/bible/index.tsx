@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import bibleService from "../../services/bible";
-import Book, { IBook } from "../../components/Book";
+import { IBook } from "../../components/Book";
 import { IVersion } from "../../components/Version";
 import { Button, Card } from "react-bootstrap";
 import { Container, Section } from "./styles";
 import booksFixture from "../../helpers/api/fixtures/books.json";
 import versionsFixture from "../../helpers/api/fixtures/versions.json";
+import { useTranslation } from "react-i18next";
+import { uppercaseFirstLetter } from "../../helpers/functions";
 
 const Bible: React.FC = () => {
   const [versions, setVersions] = useState<IVersion[]>([]);
+  const { i18n } = useTranslation();
   const [books, setBooks] = useState<IBook[]>([]);
 
   useEffect(() => {
@@ -29,7 +32,9 @@ const Bible: React.FC = () => {
       <Section>
         <Card bg="primmary" className="mb-2">
           <Card.Header>
-            <Card.Title>Versões</Card.Title>
+            <Card.Title>
+              {uppercaseFirstLetter(i18n.t("bible:versions"))}
+            </Card.Title>
           </Card.Header>
           <Card.Body>
             <ul>
@@ -47,7 +52,9 @@ const Bible: React.FC = () => {
       <Section>
         <Card bg="primmary" className="mb-2">
           <Card.Header>
-            <Card.Title>Livros</Card.Title>
+            <Card.Title>
+              {uppercaseFirstLetter(i18n.t("bible:book"))}s
+            </Card.Title>
           </Card.Header>
           <Card.Body>
             <ul>

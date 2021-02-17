@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Bible from "../pages/bible";
-import Book from "../components/Book";
-import Settings from "../pages/settings";
-import Timeline from "../components/Timeline";
-import Study from "../components/Study";
-import Group from "../components/Group";
-import Notification from "../components/Notification";
+import Bible from "../../pages/bible";
+import Book from "../../components/Book";
+import Settings from "../../pages/settings";
+import Timeline from "../../components/Timeline";
+import Study from "../../components/Study";
+import Group from "../../components/Group";
+import Notification from "../../components/Notification";
 
 const Routes: React.FC = () => (
   <Switch>

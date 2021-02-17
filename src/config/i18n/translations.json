@@ -1,0 +1,44 @@
+{
+  "pt": {
+    "settings": {
+      "namespace": "configurações",
+      "theme": "tema",
+      "language": "idioma"
+    },
+    "bible": {
+      "namespace": "bíblia",
+      "version": "versão",
+      "versions": "versões",
+      "book": "livro"
+    },
+    "book": {
+      "namespace": "livro",
+      "author": "autor",
+      "testament": "testamento",
+      "group": "grupo",
+      "chapter": "capítulo",
+      "comment": "Comentário"
+    }
+  },
+  "en": {
+    "settings": {
+      "namespace": "settings",
+      "theme": "tema",
+      "language": "idioma"
+    },
+    "bible": {
+      "namespace": "bible",
+      "version": "version",
+      "versions": "versions",
+      "book": "book"
+    },
+    "book": {
+      "namespace": "book",
+      "author": "author",
+      "testament": "testament",
+      "group": "group",
+      "chapter": "chapter",
+      "comment": "comment"
+    }
+  }
+}

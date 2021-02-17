@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 import Template from "./components/Template";
+import "./config/i18n";
 import Routes from "./config/routes";
 import useSavedState from "./hooks/useSavedState";
 import GlobalStyle from "./styles/global";
-import { themes, ThemeModeContext } from "./styles/themes";
+import { ThemeModeContext, themes } from "./styles/themes";
 
 /**
- * TODO: i18n
  * TODO: path aliases
  */
 
