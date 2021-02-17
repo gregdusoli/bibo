@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import { uppercaseFirstLetter } from "../../helpers/functions";
 import bibleService from "../../services/bible";
 import { Container } from "./styles";
 
@@ -18,6 +20,7 @@ export interface IBook {
 
 const Book: React.FC = () => {
   const [book, setBook] = useState<IBook | null>(null);
+  const { i18n } = useTranslation();
   const { abbrev } = useParams<{ abbrev: string }>();
 
   useEffect(() => {
@@ -33,20 +36,29 @@ const Book: React.FC = () => {
               <h3>{book.name}</h3>
             </li>
             <li>
-              <strong>Autor:</strong> {book.author}
+              <strong>{uppercaseFirstLetter(i18n.t("book:author"))}: </strong>
+              {book.author}
             </li>
             <li>
-              <strong>Testamento:</strong> {book.testament}
+              <strong>
+                {uppercaseFirstLetter(i18n.t("book:testament"))}:{" "}
+              </strong>
+              {book.testament}
             </li>
             <li>
-              <strong>Grupo:</strong> {book.group}
+              <strong>{uppercaseFirstLetter(i18n.t("book:group"))}: </strong>
+              {book.group}
             </li>
             <li>
-              <strong>Capítulos:</strong> {book.chapters}
+              <strong>{uppercaseFirstLetter(i18n.t("book:chapter"))}s: </strong>
+              {book.chapters}
             </li>
             {book.comment && (
               <li>
-                <strong>Comentários:</strong> {book.comment}
+                <strong>
+                  {uppercaseFirstLetter(i18n.t("book:comment"))}s:{" "}
+                </strong>
+                {book.comment}
               </li>
             )}
           </ul>

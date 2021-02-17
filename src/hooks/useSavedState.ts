@@ -1,4 +1,6 @@
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import Config from "../config";
+import { localStorageMiddleware } from "../helpers/functions";
 
 type Result<T> = [
     T,
@@ -7,13 +9,12 @@ type Result<T> = [
 
 function useSavedState<T>(key: string, initialState: T): Result<T> {
     const [state, setState] = useState(() => {
-        const savedState = localStorage.getItem(key);
-
-        return savedState ? JSON.parse(savedState) : initialState;
+        const savedState = localStorage.getItem(Config.get('appName'));
+        return savedState ? JSON.parse(savedState)[key] : initialState;
     });
 
     useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(state));
+      localStorageMiddleware(key, state);
     }, [key, state]);
 
     return [state, setState];
