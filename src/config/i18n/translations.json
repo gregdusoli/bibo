@@ -1,5 +1,11 @@
 {
   "pt": {
+    "general": {
+      "loading": "carregando",
+      "open": "abrir",
+      "close": "fechar",
+      "save": "salvar"
+    },
     "settings": {
       "namespace": "configurações",
       "theme": "tema",
@@ -17,10 +23,17 @@
       "testament": "testamento",
       "group": "grupo",
       "chapter": "capítulo",
-      "comment": "Comentário"
+      "comment": "Comentário",
+      "literary_context": "contexto literário"
     }
   },
   "en": {
+    "general": {
+      "loading": "loading",
+      "open": "open",
+      "close": "close",
+      "save": "save"
+    },
     "settings": {
       "namespace": "settings",
       "theme": "tema",
@@ -38,7 +51,8 @@
       "testament": "testament",
       "group": "group",
       "chapter": "chapter",
-      "comment": "comment"
+      "comment": "comment",
+      "literary_context": "literary context"
     }
   }
 }
