@@ -20,7 +20,7 @@ const Bible = {
         }
     },
 
-    getVerses: async (version: string, book: string, chapter?: number): Promise<any> => {
+    getChapter: async (version: string, book: string, chapter?: number): Promise<any> => {
         try {
             const cpt = !chapter ? 1 : chapter;
             const response = await fetch(`${api}/verses/${version}/${book}/${cpt}`);
@@ -28,7 +28,7 @@ const Bible = {
         } catch (error) {
             throw new Error();
         }
-    }
+    },
 };
 
 export default Bible;

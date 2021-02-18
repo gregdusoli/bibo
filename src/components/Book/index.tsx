@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { uppercaseFirstLetter } from "../../helpers/functions";
 import bibleService from "../../services/bible";
+import Modal, { ModalProps } from "../Template/Modal";
 import { Container } from "./styles";
 
 export interface IBook {
@@ -26,6 +27,21 @@ const Book: React.FC = () => {
   useEffect(() => {
     bibleService.getBooks(abbrev).then((result) => setBook(result));
   }, [abbrev]);
+
+  const modalProps: ModalProps = {
+    button: {
+      variant: "primary",
+      text: `${uppercaseFirstLetter(i18n.t("book:literary_context"))}`,
+    },
+    title: `${uppercaseFirstLetter(i18n.t("book:literary_context"))} - ${
+      book?.name
+    }`,
+    body: `${book?.comment}`,
+    close: {
+      variant: "primary",
+      text: `${uppercaseFirstLetter(i18n.t("general:close"))}`,
+    },
+  };
 
   return (
     <Container>
@@ -55,16 +71,13 @@ const Book: React.FC = () => {
             </li>
             {book.comment && (
               <li>
-                <strong>
-                  {uppercaseFirstLetter(i18n.t("book:comment"))}s:{" "}
-                </strong>
-                {book.comment}
+                <Modal {...modalProps} />
               </li>
             )}
           </ul>
         </div>
       ) : (
-        <p>Carregando...</p>
+        <p>{uppercaseFirstLetter(i18n.t("general:loading"))}...</p>
       )}
     </Container>
   );
