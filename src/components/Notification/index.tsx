@@ -1,6 +1,6 @@
-import React from "react";
-import { Container } from "./styles";
+import React from 'react'
+import { Container } from './styles'
 
-const Notification: React.FC = () => <Container>Notification</Container>;
+const Notification: React.FC = () => <Container>Notification</Container>
 
-export default Notification;
+export default Notification

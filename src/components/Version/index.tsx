@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import bibleService from "../../services/bible";
-import { Container } from "./styles";
+import React, { useState, useEffect } from 'react'
+import bibleService from '../../services/bible'
+import { Container } from './styles'
 
 export interface IVersion {
   version: string;
@@ -8,15 +8,15 @@ export interface IVersion {
 }
 
 const Version: React.FC = () => {
-  const [versions, setVersions] = useState<IVersion[]>([]);
+  const [versions, setVersions] = useState<IVersion[]>([])
 
   useEffect(() => {
     try {
-      bibleService.getVersions().then((result) => setVersions(result));
+      bibleService.getVersions().then((result) => setVersions(result))
     } catch (error) {
-      throw new Error();
+      throw new Error()
     }
-  }, []);
+  }, [])
 
   return (
     <Container>
@@ -27,11 +27,11 @@ const Version: React.FC = () => {
             <li key={version.version}>
               <a href="#!">{version.version}</a>
             </li>
-          );
+          )
         })}
       </ul>
     </Container>
-  );
-};
+  )
+}
 
-export default Version;
+export default Version

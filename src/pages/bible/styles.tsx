@@ -1,17 +1,15 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
     * {
         display: flex;
         flex-wrap: wrap;
-        align-content: space-between;
-        list-style: none;
-        
+
         & > div {
             width: 100%;
         }
     }
-`;
+`
 
 export const Section = styled.div`
     a:hover {
@@ -21,4 +19,4 @@ export const Section = styled.div`
     button {
         margin: 6px 3px 0px 3px;
     }
-`;
+`

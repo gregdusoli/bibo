@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FiSettings } from "react-icons/fi";
-import { Container } from "./styles";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { FiSettings } from 'react-icons/fi'
+import { Container } from './styles'
 
 const Header: React.FC = () => (
   <Container>
@@ -11,6 +11,6 @@ const Header: React.FC = () => (
       </Link>
     </div>
   </Container>
-);
+)
 
-export default Header;
+export default Header

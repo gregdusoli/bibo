@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Menu = styled.div`
   * {
@@ -14,4 +14,4 @@ export const Menu = styled.div`
       font-size: 2em;
     }
   }
-`;
+`

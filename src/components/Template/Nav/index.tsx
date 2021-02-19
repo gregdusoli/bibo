@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Menu } from "./styles";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Menu } from './styles'
 import {
   BiBookAdd,
   BiFileFind,
   BiGroup,
   BiMessage,
-  BiWorld,
-} from "react-icons/bi";
+  BiWorld
+} from 'react-icons/bi'
 
 const Nav: React.FC = () => (
   <Menu>
@@ -39,6 +39,6 @@ const Nav: React.FC = () => (
       </li>
     </ul>
   </Menu>
-);
+)
 
-export default Nav;
+export default Nav
