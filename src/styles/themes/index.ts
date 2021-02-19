@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
 export const themes = {
   light: {
@@ -11,7 +11,7 @@ export const themes = {
       card: '',
       line: '#ccc',
       small: '#ccc'
-    },
+    }
   },
   dark: {
     name: 'dark',
@@ -23,8 +23,8 @@ export const themes = {
       card: '#1c1c1e',
       line: '#333',
       small: '#333'
-    },
+    }
   }
-};
+}
 
-export const ThemeModeContext = createContext({ toggleTheme: () => {} });
+export const ThemeModeContext = createContext({ toggleTheme: () => {} })
