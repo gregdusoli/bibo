@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Menu } from './styles'
+import { Container } from './styles'
 import {
   BiBookAdd,
   BiFileFind,
@@ -10,7 +10,7 @@ import {
 } from 'react-icons/bi'
 
 const Nav: React.FC = () => (
-  <Menu>
+  <Container>
     <ul>
       <li>
         <Link to="/">
@@ -38,7 +38,7 @@ const Nav: React.FC = () => (
         </Link>
       </li>
     </ul>
-  </Menu>
+  </Container>
 )
 
 export default Nav

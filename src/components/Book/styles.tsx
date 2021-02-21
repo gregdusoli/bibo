@@ -3,25 +3,24 @@ import styled from 'styled-components'
 export const Container = styled.section`
   * {
     list-style: none;
-  }
-`
-export const Section = styled.div`
-    * {
-        display: flex;
-        flex-wrap: wrap;
-        list-style: none;
 
-        & > div {
-            width: 100%;
-        }
+    & > button {
+      margin-top: 10px;
+    }
+
+    & > div > ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      button {
+        margin: 6px 3px 0px 3px;
+        width: 45px;
+      }
     }
 
     a:hover {
-        text-decoration: none;
+      text-decoration: none;
     }
-
-    button {
-        margin: 6px 3px 0px 3px;
-        width: 45px;
-    }
+  }
 `
