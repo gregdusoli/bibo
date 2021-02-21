@@ -1,20 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FiMoon, FiSun } from 'react-icons/fi'
 import { GiBrazilFlag, GiUsaFlag } from 'react-icons/gi'
 import { ThemeContext } from 'styled-components'
 import { uppercaseFirstLetter } from '../../helpers/functions'
-import { ThemeModeContext } from '../../styles/themes'
+import HeaderContext from '../../hooks/context/Header'
+import ThemeModeContext from '../../hooks/context/Theme'
 import { Container } from './styles'
 
 const Settings: React.FC = () => {
   const { i18n } = useTranslation()
   const { name: themed } = useContext(ThemeContext)
+  const { setHeader } = useContext(HeaderContext)
   const { toggleTheme } = useContext(ThemeModeContext)
+
+  useEffect(() => {
+    setHeader({
+      title: `${uppercaseFirstLetter(i18n.t('settings:namespace'))}`
+    })
+  }, [])
 
   return (
     <Container>
-      <h6>{uppercaseFirstLetter(i18n.t('settings:namespace'))}</h6>
       <div>
         <span>{uppercaseFirstLetter(i18n.t('settings:theme'))}</span>
         <button onClick={toggleTheme}>

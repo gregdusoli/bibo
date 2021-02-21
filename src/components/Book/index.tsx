@@ -1,40 +1,54 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Button, Card } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-import { useParams, Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { uppercaseFirstLetter } from '../../helpers/functions'
+import HeaderContext from '../../hooks/context/Header'
 import bibleService from '../../services/bible'
 import Modal, { ModalProps } from '../Template/Modal'
-import { Container, Section } from './styles'
-import { Card, Button } from 'react-bootstrap'
+import { Container } from './styles'
 
 // TODO : remove this variable later
 const versionHardCoded = 'nvi'
 
 export interface IBook {
   abbrev: {
-    pt: string,
-    en: string,
-  },
-  author: string,
-  chapters: number,
-  comment?: string,
-  group: string,
-  name: string,
-  testament: string
+    pt: string;
+    en: string;
+  };
+  author: string;
+  chapters: number;
+  comment?: string;
+  group: string;
+  name: string;
+  testament: string;
 }
 
 interface IParams {
-  abbrev: string
+  abbrev: string;
 }
 
 const Book: React.FC = () => {
-  const [book, setBook] = useState<IBook | null>(null)
+  const { setHeader } = useContext(HeaderContext)
   const { i18n } = useTranslation()
   const { abbrev } = useParams<IParams>()
+  const [book, setBook] = useState<IBook | null>(null)
 
   useEffect(() => {
-    bibleService.getBooks(abbrev).then((result) => setBook(result))
+    bibleService.getBooks(abbrev)
+      .then(result => {
+        setBook(result)
+        setHeader({
+          title: `${uppercaseFirstLetter(i18n.t('book:namespace'))}: ${result.name}`
+        })
+      })
   }, [abbrev])
+
+  useEffect(() => {
+    setHeader({
+      title: `${uppercaseFirstLetter(i18n.t('book:namespace'))}s`
+    })
+  }, [])
 
   const modalProps: ModalProps = {
     button: {
@@ -51,52 +65,62 @@ const Book: React.FC = () => {
     }
   }
 
-  const chapterLink = (bookChapters: number): Array<{ chapter: number, link: string }> => {
+  const chapterLink = (
+    bookChapters: number
+  ): Array<{ chapter: number; link: string }> => {
     const chapterLinks = []
+
     for (let i = 1; i <= bookChapters; i++) {
       chapterLinks.push({
         chapter: i,
         link: `/books/${versionHardCoded}/${book?.abbrev.pt}/${i}`
       })
     }
+
     return chapterLinks
   }
 
   return (
     <Container>
-    {book
-      ? (
-        <div>
-          <ul>
-            <li>
-              <h3>{book.name}</h3>
-            </li>
-            <li>
-              <strong>{uppercaseFirstLetter(i18n.t('book:author'))}: </strong>
-              {book.author}
-            </li>
-            <li>
-              <strong>
-                {uppercaseFirstLetter(i18n.t('book:testament'))}:{' '}
-              </strong>
-              {book.testament}
-            </li>
-            <li>
-              <strong>{uppercaseFirstLetter(i18n.t('book:group'))}: </strong>
-              {book.group}
-            </li>
-            <li>
-              <strong>{uppercaseFirstLetter(i18n.t('book:chapter'))}s: </strong>
-              {book.chapters}
-            </li>
-            {book.comment && (
+      {!book
+        ? (
+          <p>{uppercaseFirstLetter(i18n.t('general:loading'))}...</p>
+          )
+        : (
+        <>
+          <div>
+            <ul>
+              {/* <li>
+                <h3>{book.name}</h3>
+              </li> */}
               <li>
-                <Modal {...modalProps} />
+                <strong>{uppercaseFirstLetter(i18n.t('book:author'))}: </strong>
+                {book.author}
               </li>
-            )}
-          </ul>
-
-          <Section>
+              <li>
+                <strong>
+                  {uppercaseFirstLetter(i18n.t('book:testament'))}:{' '}
+                </strong>
+                {book.testament}
+              </li>
+              <li>
+                <strong>{uppercaseFirstLetter(i18n.t('book:group'))}: </strong>
+                {book.group}
+              </li>
+              <li>
+                <strong>
+                  {uppercaseFirstLetter(i18n.t('book:chapter'))}s:{' '}
+                </strong>
+                {book.chapters}
+              </li>
+              {book.comment && (
+                <li>
+                  <Modal {...modalProps} />
+                </li>
+              )}
+            </ul>
+          </div>
+          <div>
             <Card bg="primmary" className="mb-2">
               <Card.Header>
                 <Card.Title>
@@ -115,13 +139,9 @@ const Book: React.FC = () => {
                 </ul>
               </Card.Body>
             </Card>
-          </Section>
-
-        </div>
-        )
-      : (
-        <p>{uppercaseFirstLetter(i18n.t('general:loading'))}...</p>
-        )}
+          </div>
+        </>
+          )}
     </Container>
   )
 }
