@@ -1,16 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
 import { FiSettings } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
+import HeaderContext from '../../../hooks/context/Header'
 import { Container } from './styles'
 
-const Header: React.FC = () => (
-  <Container>
-    <div>
+const Header: React.FC = () => {
+  const { header } = useContext(HeaderContext)
+
+  return (
+    <Container>
+      <h6>{header.title}</h6>
       <Link to="/settings">
-        <FiSettings size={20} />
+        <FiSettings size={18} />
       </Link>
-    </div>
-  </Container>
-)
+    </Container>
+  )
+}
 
 export default Header
