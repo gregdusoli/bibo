@@ -1,7 +1,7 @@
-import React from "react";
-import Header from "./Header";
-import Nav from "./Nav";
-import { TopBar, Content, NavBar } from "./styles";
+import React from 'react'
+import Header from './Header'
+import Nav from './Nav'
+import { TopBar, Content, NavBar } from './styles'
 
 const Template: React.FC = ({ children }) => (
   <>
@@ -13,6 +13,6 @@ const Template: React.FC = ({ children }) => (
       <Nav />
     </NavBar>
   </>
-);
+)
 
-export default Template;
+export default Template

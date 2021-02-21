@@ -1,15 +1,19 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const TopBar = styled.header`
-  margin-bottom: 10px;
-`;
+  overflow: hidden;
+  height: 6vh;
+`
 
 export const Content = styled.main`
-  min-height: 480px;
-  flex-direction: column;
-`;
+  overflow-y: auto;
+  height: 85vh;
+
+  section {
+    padding: 10px;
+  }
+`
 
 export const NavBar = styled.nav`
-  flex-direction: column;
-  border-top: 1px solid ${(props) => props.theme.colors.line};
-`;
+  height: 9vh;
+`

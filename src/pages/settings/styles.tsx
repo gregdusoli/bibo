@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.section`
   div {
     display: flex;
     justify-content: space-between;
@@ -12,4 +12,4 @@ export const Container = styled.div`
     background-color: transparent;
     color: ${(props) => props.theme.colors.text};
   }
-`;
+`

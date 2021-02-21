@@ -1,24 +1,17 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const Container = styled.div`
-    * {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: space-between;
-        list-style: none;
-        
-        & > div {
-            width: 100%;
-        }
-    }
-`;
+export const Container = styled.section`
+  * {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
 
-export const Section = styled.div`
     a:hover {
         text-decoration: none;
     }
 
     button {
-        margin: 6px 3px 0px 3px;
+      margin: 6px 3px 0px 3px;
     }
-`;
+  }
+`

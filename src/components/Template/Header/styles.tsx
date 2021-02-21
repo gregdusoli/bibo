@@ -1,15 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.header`
   display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  margin-top: 0px;
-  border-bottom: 1px solid ${(props) => props.theme.colors.line};
-
-  div {
-    text-align: right;
-    width: 100%;
-    margin-bottom: 8px;
-  }
-`;
+  justify-content: space-between;
+  padding: 5px 10px 3px 10px;
+  border-bottom: 2px solid ${(props) => props.theme.colors.line};
+`

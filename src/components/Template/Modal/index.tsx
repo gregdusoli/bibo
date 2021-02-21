@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, { useState } from 'react'
+import { Modal, Button } from 'react-bootstrap'
 
 export interface ModalProps {
   button: {
@@ -19,12 +19,12 @@ export interface ModalProps {
   };
 }
 
-const ModalComponent = (props: ModalProps): JSX.Element => {
-  const [show, setShow] = useState(false);
-  const { button, title, body, close, save } = props;
+const ModalComponent: React.FC<ModalProps> = (props) => {
+  const [show, setShow] = useState(false)
+  const { button, title, body, close, save } = props
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <>
@@ -49,7 +49,7 @@ const ModalComponent = (props: ModalProps): JSX.Element => {
         </Modal.Footer>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default ModalComponent;
+export default ModalComponent
