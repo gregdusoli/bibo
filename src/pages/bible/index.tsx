@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import bibleService from '../../services/bible'
-import { IBook } from '../../components/Book'
-import { IVersion } from '../../components/Version'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { Container, Section } from './styles'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { IBook } from '../../components/Book'
+// import { IVersion } from '../../components/Version'
 import { uppercaseFirstLetter } from '../../helpers/functions'
+import HeaderContext from '../../hooks/context/Header'
+import bibleService from '../../services/bible'
+import { Container } from './styles'
 
 const Bible: React.FC = () => {
-  const [versions, setVersions] = useState<IVersion[]>([])
+  // const [versions, setVersions] = useState<IVersion[]>([])
+  const { setHeader } = useContext(HeaderContext)
   const { i18n } = useTranslation()
   const [books, setBooks] = useState<IBook[]>([])
 
   useEffect(() => {
     try {
-      bibleService.getVersions().then((result) => setVersions(result))
-      bibleService.getBooks().then((result) => setBooks(result))
+      // bibleService.getVersions().then((result) => setVersions(result))
+      bibleService.getBooks().then(result => setBooks(result))
+      setHeader({
+        title: `${uppercaseFirstLetter(i18n.t('bible:namespace'))}`
+      })
     } catch (error) {
       throw new Error()
     }
@@ -24,46 +29,50 @@ const Bible: React.FC = () => {
 
   return (
     <Container>
-      <Section>
-        <Card bg="primmary" className="mb-2">
-          <Card.Header>
-            <Card.Title>
-              {uppercaseFirstLetter(i18n.t('bible:versions'))}
-            </Card.Title>
-          </Card.Header>
-          <Card.Body>
-            <ul>
-              {versions.map((version) => {
-                return (
-                  <li key={version.version}>
-                    <Button>{version.version.toUpperCase()}</Button>
+      {!books
+        ? (
+          <p>{uppercaseFirstLetter(i18n.t('general:loading'))}...</p>
+          )
+        : (
+        <>
+          {/* <Card bg="primmary" className="mb-2">
+            <Card.Header>
+              <Card.Title>
+                {uppercaseFirstLetter(i18n.t('bible:versions'))}
+              </Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <ul>
+                {versions.map((version) => {
+                  return (
+                    <li key={version.version}>
+                      <Button>{version.version.toUpperCase()}</Button>
+                    </li>
+                  )
+                })}
+              </ul>
+            </Card.Body>
+          </Card> */}
+          <Card bg="primmary" className="mb-2">
+            <Card.Header>
+              <Card.Title>
+                {uppercaseFirstLetter(i18n.t('bible:book'))}s
+              </Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <ul>
+                {books.map(book => (
+                  <li key={book.abbrev.en}>
+                    <Link to={`/books/${book.abbrev.en}`}>
+                      <Button>{book.name}</Button>
+                    </Link>
                   </li>
-                )
-              })}
-            </ul>
-          </Card.Body>
-        </Card>
-      </Section>
-      <Section>
-        <Card bg="primmary" className="mb-2">
-          <Card.Header>
-            <Card.Title>
-              {uppercaseFirstLetter(i18n.t('bible:book'))}s
-            </Card.Title>
-          </Card.Header>
-          <Card.Body>
-            <ul>
-              {books.map(book => (
-                <li key={book.abbrev.en}>
-                  <Link to={`/books/${book.abbrev.en}`}>
-                    <Button>{book.name}</Button>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Card.Body>
-        </Card>
-      </Section>
+                ))}
+              </ul>
+            </Card.Body>
+          </Card>
+        </>
+          )}
     </Container>
   )
 }

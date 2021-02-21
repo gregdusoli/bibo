@@ -25,6 +25,18 @@
       "chapter": "capítulo",
       "comment": "Comentário",
       "literary_context": "contexto literário"
+    },
+    "timeline": {
+      "namespace": "linha do tempo"
+    },
+    "groups": {
+      "namespace": "grupos"
+    },
+    "notifications": {
+      "namespace": "notificações"
+    },
+    "studies": {
+      "namespace": "estudos"
     }
   },
   "en": {
@@ -53,6 +65,18 @@
       "chapter": "chapter",
       "comment": "comment",
       "literary_context": "literary context"
+    },
+    "timeline": {
+      "namespace": "timeline"
+    },
+    "groups": {
+      "namespace": "groups"
+    },
+    "notifications": {
+      "namespace": "notifications"
+    },
+    "studies": {
+      "namespace": "studies"
     }
   }
 }
