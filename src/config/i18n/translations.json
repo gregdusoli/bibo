@@ -1,5 +1,5 @@
 {
-  "pt": {
+  "pt-BR": {
     "general": {
       "loading": "carregando",
       "open": "abrir",
@@ -48,8 +48,8 @@
     },
     "settings": {
       "namespace": "settings",
-      "theme": "tema",
-      "language": "idioma"
+      "theme": "theme",
+      "language": "language"
     },
     "bible": {
       "namespace": "bible",

@@ -10,6 +10,7 @@ type Result<T> = [
 function useSavedState<T> (key: string, initialState: T): Result<T> {
   const [state, setState] = useState(() => {
     const savedState = localStorage.getItem(Config.get('appName'))
+
     return savedState ? JSON.parse(savedState)[key] : initialState
   })
 
