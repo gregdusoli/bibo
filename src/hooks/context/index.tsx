@@ -1,14 +1,17 @@
 import React from 'react'
 import { ThemeContextProvider } from './Theme'
 import { HeaderContextProvider } from './Header'
+import { LanguageContextProvider } from './Language'
 
 const GlobalContext: React.FC = ({ children }) => {
   return (
-    <ThemeContextProvider>
-      <HeaderContextProvider>
-        {children}
-      </HeaderContextProvider>
-    </ThemeContextProvider>
+    <LanguageContextProvider>
+      <ThemeContextProvider>
+        <HeaderContextProvider>
+          {children}
+        </HeaderContextProvider>
+      </ThemeContextProvider>
+    </LanguageContextProvider>
   )
 }
 

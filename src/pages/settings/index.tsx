@@ -6,12 +6,14 @@ import { ThemeContext } from 'styled-components'
 import { uppercaseFirstLetter } from '../../helpers/functions'
 import HeaderContext from '../../hooks/context/Header'
 import ThemeModeContext from '../../hooks/context/Theme'
+import LanguageContext from '../../hooks/context/Language'
 import { Container } from './styles'
 
 const Settings: React.FC = () => {
   const { i18n } = useTranslation()
   const { name: themed } = useContext(ThemeContext)
   const { setHeader } = useContext(HeaderContext)
+  const { changeLanguage } = useContext(LanguageContext)
   const { toggleTheme } = useContext(ThemeModeContext)
 
   useEffect(() => {
@@ -30,14 +32,8 @@ const Settings: React.FC = () => {
       </div>
       <div>
         <span>{uppercaseFirstLetter(i18n.t('settings:language'))}</span>
-        <button>
-          {i18n.language === 'pt'
-            ? (
-            <GiBrazilFlag size={22} />
-              )
-            : (
-            <GiUsaFlag size={18} />
-              )}
+        <button onClick={changeLanguage}>
+          {i18n.language === 'en' ? <GiUsaFlag size={18} /> : <GiBrazilFlag size={22} />}
         </button>
       </div>
     </Container>
