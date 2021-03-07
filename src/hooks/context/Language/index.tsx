@@ -12,7 +12,6 @@ interface LanguageContextProps {
   language: LanguageProps
   changeLanguage: () => void
 }
-// changeLanguage: React.Dispatch<React.SetStateAction<LanguageProps>>
 
 const INITIAL_VALUE = {
   language: {
@@ -27,8 +26,9 @@ export const LanguageContextProvider: React.FC = ({ children }) => {
   const [lang, setLang] = useSavedState<LanguageProps>('language', INITIAL_VALUE.language)
 
   function changeLanguage () {
-    setLang(lang.name === 'en' ? { name: Languages.BR } : { name: Languages.EN })
-    i18n.changeLanguage(lang.name)
+    const newLanguage = lang.name === 'en' ? { name: Languages.BR } : { name: Languages.EN }
+    setLang(newLanguage)
+    i18n.changeLanguage(newLanguage.name)
   }
 
   return (

@@ -19,7 +19,8 @@ export const ThemeContextProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useSavedState<DefaultTheme>('theme', INITIAL_VALUE.theme)
 
   function toggleTheme () {
-    setTheme(theme.name === 'light' ? themes.dark : themes.light)
+    const newTheme = theme.name === 'light' ? themes.dark : themes.light
+    setTheme(newTheme)
   }
 
   return (
