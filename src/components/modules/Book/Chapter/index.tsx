@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import bibleService from '../../../services/bible'
+import bibleService from '../../../../services/bible'
 import { Container } from './styles'
 
 export interface IChapter {

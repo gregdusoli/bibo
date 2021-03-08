@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, Card } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
-import { uppercaseFirstLetter } from '../../helpers/functions'
-import HeaderContext from '../../hooks/context/Header'
-import bibleService from '../../services/bible'
-import Modal, { ModalProps } from '../Template/Modal'
+import { uppercaseFirstLetter } from '../../../helpers/functions'
+import HeaderContext from '../../../hooks/context/Header'
+import bibleService from '../../../services/bible'
+import Button from '../../template/Button'
+import Card from '../../template/Card'
+import Modal, { ModalProps } from '../../template/Modal'
 import { Container } from './styles'
 
 // TODO : remove this variable later
@@ -121,23 +122,16 @@ const Book: React.FC = () => {
             </ul>
           </div>
           <div>
-            <Card bg="primmary" className="mb-2">
-              <Card.Header>
-                <Card.Title>
-                  {uppercaseFirstLetter(i18n.t('book:chapter'))}s
-                </Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <ul>
-                  {chapterLink(book.chapters).map(({ chapter, link }) => (
-                    <li key={chapter}>
-                      <Link to={link}>
-                        <Button>{chapter}</Button>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Card.Body>
+            <Card bg="primmary" className="mb-2" title={uppercaseFirstLetter(i18n.t('book:chapter'))}>
+              <ul>
+                {chapterLink(book.chapters).map(({ chapter, link }) => (
+                  <li key={chapter}>
+                    <Link to={link}>
+                      <Button>{chapter}</Button>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </Card>
           </div>
         </>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Template from './components/Template'
+import Template from './components/template'
 import './config/i18n'
 import Routes from './config/routes'
 import GlobalContext from './hooks/context'
