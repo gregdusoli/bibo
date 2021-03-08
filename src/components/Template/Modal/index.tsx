@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { withTheme } from 'styled-components'
+import Button from '../Button'
 import { ModalStyle } from './styles'
 
 export interface ModalProps {

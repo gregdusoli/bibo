@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import bibleService from '../../services/bible'
+import bibleService from '../../../services/bible'
 import { Container } from './styles'
 
 export interface IVersion {

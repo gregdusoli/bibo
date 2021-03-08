@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, Card } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { IBook } from '../../components/Book'
+import { IBook } from '../../components/modules/Book'
+import Button from '../../components/template/Button'
+import Card from '../../components/template/Card'
 // import { IVersion } from '../../components/Version'
 import { uppercaseFirstLetter } from '../../helpers/functions'
 import HeaderContext from '../../hooks/context/Header'
@@ -53,23 +54,16 @@ const Bible: React.FC = () => {
               </ul>
             </Card.Body>
           </Card> */}
-          <Card bg="primmary" className="mb-2">
-            <Card.Header>
-              <Card.Title>
-                {uppercaseFirstLetter(i18n.t('bible:book'))}s
-              </Card.Title>
-            </Card.Header>
-            <Card.Body>
-              <ul>
-                {books.map(book => (
-                  <li key={book.abbrev.en}>
-                    <Link to={`/books/${book.abbrev.en}`}>
-                      <Button>{book.name}</Button>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Card.Body>
+          <Card bg="primmary" className="mb-2" title={uppercaseFirstLetter(i18n.t('bible:book'))}>
+            <ul>
+              {books.map(book => (
+                <li key={book.abbrev.en}>
+                  <Link to={`/books/${book.abbrev.en}`}>
+                    <Button>{book.name}</Button>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </Card>
         </>
           )}
