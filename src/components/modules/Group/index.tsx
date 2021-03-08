@@ -1,20 +1,20 @@
 import React, { useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { uppercaseFirstLetter } from '../../helpers/functions'
-import HeaderContext from '../../hooks/context/Header'
+import { uppercaseFirstLetter } from '../../../helpers/functions'
+import HeaderContext from '../../../hooks/context/Header'
 import { Container } from './styles'
 
-const Timeline: React.FC = () => {
+const Group: React.FC = () => {
   const { i18n } = useTranslation()
   const { setHeader } = useContext(HeaderContext)
 
   useEffect(() => {
     setHeader({
-      title: `${uppercaseFirstLetter(i18n.t('timeline:namespace'))}`
+      title: `${uppercaseFirstLetter(i18n.t('groups:namespace'))}`
     })
   }, [])
 
   return <Container></Container>
 }
 
-export default Timeline
+export default Group

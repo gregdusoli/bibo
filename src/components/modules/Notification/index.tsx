@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { uppercaseFirstLetter } from '../../helpers/functions'
-import HeaderContext from '../../hooks/context/Header'
+import { uppercaseFirstLetter } from '../../../helpers/functions'
+import HeaderContext from '../../../hooks/context/Header'
 import { Container } from './styles'
 
 const Notification: React.FC = () => {
