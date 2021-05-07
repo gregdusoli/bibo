@@ -5,7 +5,10 @@ import { Container } from './styles'
 
 export interface IChapter {
   book: {
-    abbrev: string,
+    abbrev: {
+      pt: string,
+      en: string
+    },
     name: string,
     author: string,
     group: string,
